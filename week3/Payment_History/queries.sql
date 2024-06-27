@@ -1,5 +1,17 @@
-USE `Payment History`;
+-- Find all payments made by payment method called 'PayPay'
+SELECT payments.id, payment_methods.name FROM payments
+JOIN payment_methods
+ON payments.payment_method_id = payment_methods.id
+WHERE payment_methods.name = 'PayPay';
 
+-- Find all payment methods used by Emmanuel Macron
+SELECT payment_methods.name AS 'payment_method', users.first_name, users.last_name
+FROM payment_methods
+JOIN users
+ON payment_methods.user_id = users.id
+WHERE first_name = 'Emmanuel' and last_name = 'Macron'
+
+-- Insert data to each entity
 INSERT INTO users (id, first_name, last_name) VALUES
 (1, 'Hitomi', 'Yamamoto');
 
